@@ -1,1 +1,6 @@
+com/hacked/springsecurity6/Config/SecurityConfig.class
+com/hacked/springsecurity6/Controller/DemoController.class
+com/hacked/springsecurity6/Config/SecurityConfig$InMemorySecurity.class
+com/hacked/springsecurity6/Config/RequestLoggingFilterConfig.class
 com/hacked/springsecurity6/SpringSecurity6Application.class
+com/hacked/springsecurity6/Config/SecurityConfig$NoSecurity.class
