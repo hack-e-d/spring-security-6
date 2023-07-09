@@ -17,10 +17,9 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
-//@EnableWebSecurity(debug = true)
-@EnableMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
 
+    @EnableMethodSecurity()
     @ConditionalOnProperty("security-in-memory")
     @Order(1)
     public class InMemorySecurity {
@@ -55,6 +54,7 @@ public class SecurityConfig {
         }
     }
 
+    @EnableMethodSecurity(prePostEnabled = false)
     @ConditionalOnProperty("security-no-security")
     @Order(1)
     public class NoSecurity {
