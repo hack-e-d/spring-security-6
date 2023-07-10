@@ -79,6 +79,6 @@ public class DemoController {
     @GetMapping("demo7")
     @PostFilter("filterObject.contains('a')")
     public List<String> demo7() {
-        return  new ArrayList<>(Arrays.asList("asd", "aswe","dfghj","awwq"));
+        return  new ArrayList<>(Arrays.asList("asd", "aswe","dfghj","awwq")); // ArrayList is mutable that is can be changed
     }
 }
