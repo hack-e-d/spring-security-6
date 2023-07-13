@@ -5,3 +5,7 @@ Spring Security 6.0 using spring boot 3
 ->For no security set security-no-security to true and others to false
 <br>
 ->For basic security set security-in-memory to true and others to false
+<br>
+->For Disabling basic security totally use the following flags security-enable-basic-security=false
+<br>
+->For Disabling or enabling authorization server in the application use the following property security-enable-authorization-server

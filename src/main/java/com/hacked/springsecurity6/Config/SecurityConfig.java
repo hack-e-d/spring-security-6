@@ -17,6 +17,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
+@ConditionalOnProperty("security-enable-basic-security")
 public class SecurityConfig {
 
     @EnableMethodSecurity()
