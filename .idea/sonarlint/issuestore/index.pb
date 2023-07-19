@@ -7,3 +7,5 @@ bsrc/main/java/com/hacked/springsecurity6/Exceptionhandlers/RestResponseEntityEx
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 †
 Vsrc/main/java/com/hacked/springsecurity6/AuthorizationServer/Config/PKCE/PKCEUtil.java,3\0\30202e98d5bd8858a31fe5437b584bea0ed52ecd
+s
+Csrc/main/java/com/hacked/springsecurity6/Config/SecurityConfig.java,2\c\2c1483d12e981ad7c13a1765c74b6e1f4dad4870
