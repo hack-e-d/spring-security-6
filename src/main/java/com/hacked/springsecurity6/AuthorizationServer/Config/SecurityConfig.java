@@ -125,6 +125,7 @@ public class SecurityConfig {
                 .tokenSettings(
                         TokenSettings.builder()
                                 .accessTokenTimeToLive(Duration.ofSeconds(9000))
+//                                Access token format is to mention of opaque or non-opaque token (SELF_CONTAINED => non-opaque token)
                                 .accessTokenFormat(OAuth2TokenFormat.SELF_CONTAINED)
                                 .build()
                 )
