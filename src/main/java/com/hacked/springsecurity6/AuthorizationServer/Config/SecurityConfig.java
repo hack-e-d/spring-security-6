@@ -5,6 +5,7 @@ import com.nimbusds.jose.jwk.RSAKey;
 import com.nimbusds.jose.jwk.source.ImmutableJWKSet;
 import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -34,7 +35,6 @@ import org.springframework.security.oauth2.server.authorization.token.OAuth2Toke
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
-
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
@@ -45,9 +45,15 @@ import java.util.List;
 import java.util.UUID;
 import java.util.function.Consumer;
 
+
+//get call ==> http://localhost:3000/oauth2/authorize?response_type=code&client_id=client&scope=openid&redirect_uri=https://springone.io/authorized&code_challenge=QYPAZ5NU8yvtlQ9erXrUYR-T5AGCjCF47vN-KsaI2A8&code_challenge_method=S256
+//post call ==> http://localhost:3000/oauth2/token?client_id=client&redirect_uri=https://springone.io/authorized&grant_type=authorization_code&code=hn2ZoCMH0Oqes90kJpkD8aGCDWeHAVwKWp0eD30d6gRebJvyFt1XA7X6VnymtX_LssbCL095ervPSXoq5v6dM-ul9882dcbLcY8PxbWZpIAzCOuivRBz6VrT2sHhi8Y_&code_verifier=qPsH306-ZDDaOE8DFzVn05TkN3ZZoVmI_6x4LsVglQI
 @Configuration
 @ConditionalOnProperty("security-enable-authorization-server")
 public class SecurityConfig {
+
+    @Value("${security-authorization-server-inmemory}")
+    public boolean inMemoryFlag;
 
     @Bean
     @Order(1)
@@ -91,12 +97,13 @@ public class SecurityConfig {
         return httpSecurity.build();
     }
 
+    @ConditionalOnProperty("security-authorization-server-inmemory")
     @Bean
     public UserDetailsService userDetailsService() {
         InMemoryUserDetailsManager imu = new InMemoryUserDetailsManager();
 
         UserDetails user = User.withUsername("jack")
-                .password(passwordEncoder().encode("12345"))
+                .password(passwordEncoder().encode("1245"))
                 .authorities("read","write","make")
                 .build();
 
@@ -109,6 +116,7 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder(8);
     }
 
+    @ConditionalOnProperty("security-authorization-server-inmemory")
     @Bean
     public RegisteredClientRepository registeredClientRepository() {
         RegisteredClient registeredClient = RegisteredClient.withId(UUID.randomUUID().toString())
@@ -165,5 +173,4 @@ public class SecurityConfig {
         return context -> context.getClaims().claim("Test-Name","test")
                 .claim("IsAdmin","true");
     }
-
 }
